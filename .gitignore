@@ -1,32 +1,114 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+#include <iostream>
+#include <string.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <time.h>
+#include <math.h>
+#include <dos.h> 
+#include <windows.h>
+using namespace std;
+HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+HWND hWnd = GetConsoleWindow();
+HMENU hMenu = GetSystemMenu(hWnd, false);
+COORD CursorPosition;
+char g1=201,g2=187,g3=188,g4=200,c1=186,c2=205,gdb1=204,gdb2=203;
+void gotoxy(int x, int y){
+	CursorPosition.X = x;
+	CursorPosition.Y = y;
+	SetConsoleCursorPosition(console, CursorPosition);
+}
+void TextColor(int x){
+    HANDLE h= GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(h, x);
+}
+void resizeConsole(int width, int height){
+	HWND console = GetConsoleWindow();
+	RECT r;
+	GetWindowRect(console, &r);
+	MoveWindow(console, 10, 10, width, height, TRUE);
+}
+void setFontSize(int FontSize){
+	CONSOLE_FONT_INFOEX info = {0};
+	info.cbSize = sizeof(info);
+	info.dwFontSize.Y = FontSize; // leave X as zero
+	info.FontWeight = FW_NORMAL;
+	wcscpy(info.FaceName, L"Consolas");
+	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), NULL, &info);
+}
+int main(int argc, char** argv) {
+	DeleteMenu(hMenu, SC_MAXIMIZE, MF_BYCOMMAND);
+	SetWindowLong(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) & ~WS_SIZEBOX);
+	srand(time(NULL));
+	int ytoado=1;
+	for(;;){
+		setFontSize(30);
+		resizeConsole(1100,700);
+		system("cls");
+		TextColor(rand()%15+1);
+		gotoxy(7,2);cout<<g1<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<g2;gotoxy(40,2);cout<<"Press \"W\" to up";
+		TextColor(rand()%15+1);
+		gotoxy(7,3);cout<<c1<<"     BHN GAME     "<<gdb1<<g2;gotoxy(40,3);cout<<"Press \"S\" to down";
+		TextColor(rand()%15+1);
+		gotoxy(7,4);cout<<g4<<gdb2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<g3<<c1;gotoxy(40,4);cout<<"Press enter to select";
+		TextColor(rand()%15+1);
+		gotoxy(8,5);cout<<g4<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<c2<<g3;
+		TextColor(rand()%15+1);
+		gotoxy(6,6); cout<<"1 - Game 1: Slide puzzle";
+		TextColor(rand()%15+1);
+		gotoxy(6,7); cout<<"2 - Game 2: Tug";
+		TextColor(rand()%15+1);
+		gotoxy(6,8); cout<<"3 - Game 3: Caro";
+		TextColor(rand()%15+1);
+		gotoxy(6,9); cout<<"4 - Game 4: Find the way";
+		TextColor(rand()%15+1);
+		gotoxy(6,10);cout<<"5 - Game 5: Trouble";
+		TextColor(rand()%15+1);
+		gotoxy(6,11);cout<<"6 - Code";
+		TextColor(rand()%15+1);
+		gotoxy(6,12);cout<<"7 - Exit";
+		TextColor(15);
+		gotoxy(3,ytoado+5);cout<<"=>";
+		gotoxy(31,ytoado+5);cout<<"<=";
+		char c=getch();
+		if(c=='W'||c=='w'){
+			if(ytoado==1)
+				ytoado=7;
+			else
+				ytoado--;
+		}
+		if(c=='S'||c=='s'){
+			if(ytoado==7)
+				ytoado=1;
+			else
+				ytoado++;
+		}
+		if(c==13){
+			if(ytoado!=6){
+				for(int i=0;i<50;i++){
+					int n=rand()%15+1;
+					TextColor(n);
+					gotoxy(3,ytoado+5);cout<<"=>";
+					gotoxy(31,ytoado+5);cout<<"<=";
+					Sleep(50);
+				}
+			}
+			if(ytoado==1)
+				system("SliderPuzzle.exe");
+			else if(ytoado==2)
+				system("Tug.exe");
+			else if(ytoado==3)
+				system("Caro.exe");
+			else if(ytoado==4)
+				system("FindTheWay.exe");
+			else if(ytoado==5)
+				system("Trouble.exe");
+			else if(ytoado==6)
+				system("CodeC++.url");
+			if(ytoado==7)
+				c=27;
+		}
+		if(c==27)
+			break;
+	}
+	return 0;
+}
