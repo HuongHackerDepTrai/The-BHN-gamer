@@ -316,8 +316,8 @@ void Gmain(){
 				Y--;
 		}
 		if(c=='S'||c=='s'){
-			if(Y==3)
-				Y=4;
+			if(Y==4)
+				Y=1;
 			else
 				Y++;
 		}
