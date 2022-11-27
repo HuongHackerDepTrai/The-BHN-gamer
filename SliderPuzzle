@@ -39,15 +39,15 @@ void YouWin(int move,int phut,int giay){
 	gotoxy(9,16);cout<<"Press anykey to back";
 	for(;;){
 		TextColor(rand()%15+1);
-		gotoxy(10,7); cout<<" ±±±±   ±±±   ±      ±   ±  ±±±±±  ±±±";
+		gotoxy(10,7); cout<<" Â±Â±Â±Â±   Â±Â±Â±   Â±      Â±   Â±  Â±Â±Â±Â±Â±  Â±Â±Â±";
 		TextColor(rand()%15+1);
-		gotoxy(10,8); cout<<"±      ±   ±  ±      ±   ±  ±      ±  ±";
+		gotoxy(10,8); cout<<"Â±      Â±   Â±  Â±      Â±   Â±  Â±      Â±  Â±";
 		TextColor(rand()%15+1);
-		gotoxy(10,9); cout<<" ±±±   ±   ±  ±       ± ±   ±±±±±  ±  ±";
+		gotoxy(10,9); cout<<" Â±Â±Â±   Â±   Â±  Â±       Â± Â±   Â±Â±Â±Â±Â±  Â±  Â±";
 		TextColor(rand()%15+1);
-		gotoxy(10,10);cout<<"    ±  ±   ±  ±       ± ±   ±      ±  ±";
+		gotoxy(10,10);cout<<"    Â±  Â±   Â±  Â±       Â± Â±   Â±      Â±  Â±";
 		TextColor(rand()%15+1);
-		gotoxy(10,11);cout<<"±±±±    ±±±   ±±±±±    ±    ±±±±±  ±±±";
+		gotoxy(10,11);cout<<"Â±Â±Â±Â±    Â±Â±Â±   Â±Â±Â±Â±Â±    Â±    Â±Â±Â±Â±Â±  Â±Â±Â±";
 		gotoxy(10,12);cout<<"Congratulations! You solved this puzzle in "<<move<<" moves.";
 		gotoxy(7,14);cout<<"Time: ";
 	    if(phut<10)
@@ -302,20 +302,22 @@ void Gmain(){
 		TextColor(rand()%15+1);
 		gotoxy(7,3);cout<<"2 - Instructions";
 		TextColor(rand()%15+1);
-		gotoxy(7,4);cout<<"3 - Exit";
+		gotoxy(7,4);cout<<"3 - Code";
+		TextColor(rand()%15+1);
+		gotoxy(7,5);cout<<"4 - Exit";
 		TextColor(15);
 		gotoxy(3,Y+1);cout<<"=>";
 		gotoxy(25,Y+1);cout<<"<=";
 		char c=getch();
 		if(c=='W'||c=='w'){
 			if(Y==1)
-				Y=3;
+				Y=4;
 			else
 				Y--;
 		}
 		if(c=='S'||c=='s'){
 			if(Y==3)
-				Y=1;
+				Y=4;
 			else
 				Y++;
 		}
@@ -324,6 +326,8 @@ void Gmain(){
 				Game1();
 			else if(Y==2)
 				Instructions();
+			else if(Y==3)
+				system("CodeC++2.url");
 			else
 				c=27;
 		}
