@@ -78,11 +78,11 @@ void Vat2(int x,int y){
 	gotoxy(x,y+9);cout<<gait<<vat<<vat<<gaip;
 }
 void Lose(int score){
-	gotoxy(10,10);cout<<"±      ±±±    ±±±±  ±±±±";
-	gotoxy(10,11);cout<<"±     ±   ±  ±      ±";
-	gotoxy(10,12);cout<<"±     ±   ±   ±±±   ±±±±";
-	gotoxy(10,13);cout<<"±     ±   ±      ±  ±";
-	gotoxy(10,14);cout<<"±±±±   ±±±   ±±±±   ±±±±";
+	gotoxy(10,10);cout<<"Â±      Â±Â±Â±    Â±Â±Â±Â±  Â±Â±Â±Â±";
+	gotoxy(10,11);cout<<"Â±     Â±   Â±  Â±      Â±";
+	gotoxy(10,12);cout<<"Â±     Â±   Â±   Â±Â±Â±   Â±Â±Â±Â±";
+	gotoxy(10,13);cout<<"Â±     Â±   Â±      Â±  Â±";
+	gotoxy(10,14);cout<<"Â±Â±Â±Â±   Â±Â±Â±   Â±Â±Â±Â±   Â±Â±Â±Â±";
 	gotoxy(9,16);cout<<"Your score: "<<score;
 }
 void Instruction(){
@@ -114,26 +114,28 @@ float menu(){
 		TextColor(rand()%15+1);
 		gotoxy(4,7);cout<<"4 - Legendary";
 		TextColor(rand()%15+1);
-		gotoxy(4,8);cout<<"5 - Exit";
+		gotoxy(4,8);cout<<"5 - Code";
+		TextColor(rand()%15+1);
+		gotoxy(4,9);cout<<"6 - Exit";
 		TextColor(15);
 		gotoxy(1,tdy+3);cout<<"=>";
 		gotoxy(20,tdy+3);cout<<"<=";
 		char c=getch();
 		if(c=='W'||c=='w'){
 			if(tdy==1)
-				tdy=5;
+				tdy=6;
 			else
 				tdy--;
 		}
 		if(c=='S'||c=='s'){
-			if(tdy==5)
+			if(tdy==6)
 				tdy=1;
 			else
 				tdy++;
 		}
 		if(c==' '||c==13){
 			system("cls");
-			if(tdy==5)
+			if(tdy==6)
 				return 0;
 			gotoxy(4,2);cout<<"Press anykey to continue";
 			getch();
@@ -146,6 +148,8 @@ float menu(){
 				return 50;
 			else if(tdy==4)
 				return 30;
+			else if(tdy==5)
+				system("CodeC++5.url");
 		}
 	}
 }
