@@ -36,18 +36,18 @@ void setFontSize(int FontSize){
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), NULL, &info);
 }
 void WIN(){
-	gotoxy(10,11);cout<<"±   ±   ±±±   ±   ±      ±   ±   ±  ±  ±±  ±";
-	gotoxy(10,12);cout<<" ± ±   ±   ±  ±   ±      ±   ±   ±  ±  ± ± ±";
-	gotoxy(10,13);cout<<"  ±    ±   ±  ±   ±       ± ± ± ±   ±  ± ± ±";
-	gotoxy(10,14);cout<<"  ±    ±   ±  ±   ±       ± ± ± ±   ±  ± ± ±";
-	gotoxy(10,15);cout<<"  ±     ±±±    ±±±         ±   ±    ±  ±  ±±";
+	gotoxy(10,11);cout<<"Â±   Â±   Â±Â±Â±   Â±   Â±      Â±   Â±   Â±  Â±  Â±Â±  Â±";
+	gotoxy(10,12);cout<<" Â± Â±   Â±   Â±  Â±   Â±      Â±   Â±   Â±  Â±  Â± Â± Â±";
+	gotoxy(10,13);cout<<"  Â±    Â±   Â±  Â±   Â±       Â± Â± Â± Â±   Â±  Â± Â± Â±";
+	gotoxy(10,14);cout<<"  Â±    Â±   Â±  Â±   Â±       Â± Â± Â± Â±   Â±  Â± Â± Â±";
+	gotoxy(10,15);cout<<"  Â±     Â±Â±Â±    Â±Â±Â±         Â±   Â±    Â±  Â±  Â±Â±";
 }
 void LOSE(){
-	gotoxy(10,11);cout<<"±   ±   ±±±   ±   ±      ±     ±±±    ±±±±  ±±±±±";
-	gotoxy(10,12);cout<<" ± ±   ±   ±  ±   ±      ±    ±   ±  ±      ±";
-	gotoxy(10,13);cout<<"  ±    ±   ±  ±   ±      ±    ±   ±   ±±±   ±±±±±";
-	gotoxy(10,14);cout<<"  ±    ±   ±  ±   ±      ±    ±   ±      ±  ±";
-	gotoxy(10,15);cout<<"  ±     ±±±    ±±±       ±±±±  ±±±   ±±±±   ±±±±±";
+	gotoxy(10,11);cout<<"Â±   Â±   Â±Â±Â±   Â±   Â±      Â±     Â±Â±Â±    Â±Â±Â±Â±  Â±Â±Â±Â±Â±";
+	gotoxy(10,12);cout<<" Â± Â±   Â±   Â±  Â±   Â±      Â±    Â±   Â±  Â±      Â±";
+	gotoxy(10,13);cout<<"  Â±    Â±   Â±  Â±   Â±      Â±    Â±   Â±   Â±Â±Â±   Â±Â±Â±Â±Â±";
+	gotoxy(10,14);cout<<"  Â±    Â±   Â±  Â±   Â±      Â±    Â±   Â±      Â±  Â±";
+	gotoxy(10,15);cout<<"  Â±     Â±Â±Â±    Â±Â±Â±       Â±Â±Â±Â±  Â±Â±Â±   Â±Â±Â±Â±   Â±Â±Â±Â±Â±";
 }
 int Build(char G[7][71]){
 	for(int i=0;i<7;i++){
@@ -232,6 +232,43 @@ int main(int argc, char** argv) {
 	setFontSize(20);
 	resizeConsole(1000,500);
 	srand(time(NULL));
-	Game();
+	int Y=1;
+	for(;;){
+		system("cls");
+		TextColor(rand()%15+1);
+		gotoxy(5,2);cout<<"|Find the way|";
+		TextColor(rand()%15+1);
+		gotoxy(4,3);cout<<"1 - Play";
+		TextColor(rand()%15+1);
+		gotoxy(4,4);cout<<"2 - Code";
+		TextColor(rand()%15+1);
+		gotoxy(4,5);cout<<"3 - Exit";
+		TextColor(15);
+		gotoxy(1,Y+2);cout<<"=>";
+		gotoxy(13,Y+2);cout<<"<=";
+		char ch=getch();
+		if(ch=='w'||ch=='W'){
+			if(Y==1)
+				Y=3;
+			else
+				Y--;
+		}
+		if(ch=='s'||ch=='S'){
+			if(Y==3)
+				Y=1;
+			else
+				Y++;
+		}
+		if(ch==13||ch==' '){
+			if(Y==1)
+				Game();
+			else if(Y==2)
+				system("CodeC++4.url");
+			else
+				break;
+		}
+		if(ch==27)
+			break;
+	}
 	return 0;
 }
