@@ -36,8 +36,6 @@ void setFontSize(int FontSize){
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), NULL, &info);
 }
 int main(int argc, char** argv) {
-	DeleteMenu(hMenu, SC_MAXIMIZE, MF_BYCOMMAND);
-	SetWindowLong(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) & ~WS_SIZEBOX);
 	srand(time(NULL));
 	int ytoado=1;
 	for(;;){
